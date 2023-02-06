@@ -1,0 +1,27 @@
+  <nav>
+    <div class="nav-wrapper">
+      <a href="/" class="brand-logo">Logo</a>
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
+        {{#if isMain}}
+        <li class="active"><a href="/">Главная</a></li>
+        {{else}}
+        <li><a href="/">Главная</a></li>
+        {{/if}}
+
+        {{#if isCourses}}
+        <li class="active"><a href="/courses">Курсы</a></li>
+        {{else}}
+        <li><a href="/courses">Курсы</a></li>
+        {{/if}}
+
+        {{#if is}}
+        <li class="active"><a href="/add/course">Добавить курс</a></li>
+        {{else}}
+
+        <li><a href="/add/course">Добавить курс</a></li>
+        {{/if}}
+       
+        
+      </ul>
+    </div>
+  </nav>
