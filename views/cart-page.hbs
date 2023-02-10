@@ -1,0 +1,21 @@
+
+
+<table>
+    <thead>
+        <tr>
+            <th>Название</th>
+            <th>Стоимость</th>
+            <th>Колличество</th>
+        </tr>
+    </thead>
+    <tbody>
+       {{#each items}}
+        <tr>
+            <td class="title">{{title}}</td>
+            <td><span class="price">{{price}}</span></td>
+            <td class="title">{{count}}шт</td>
+        </tr>
+       {{/each}}
+    </tbody>
+</table>
+<span class="cart-price">Общая стоимость: <b class="price">{{price}}</b></span>

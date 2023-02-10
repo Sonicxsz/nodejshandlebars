@@ -4,3 +4,37 @@
 .container{
     padding: 1rem 2rem;
 }
+
+.img-wrapper{
+    width: 600px;
+}
+
+.img-wrapper img{
+    width: 100%;
+}
+.title{
+    font-size: 18px;
+}
+.price {
+    font-size: 20px;
+}
+.course{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+.card-controll{
+    display: flex;
+    justify-content: space-between;
+    align-items:center;
+
+}
+
+.cart-price{
+    display: block;
+    margin-top: 20px;
+    font-size: 18px;
+   
+}
