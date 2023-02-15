@@ -36,6 +36,38 @@ class Cart {
 
     }
 
+    static async delete(id){
+        const cart = await Cart.fetch()
+        const idx = cart.items.findIndex(i => i.id === id)
+        const course = cart.items[idx]
+
+        
+
+        if(course.count === 1){
+            cart.items = cart.items.filter(item => item.id !== id)
+        }else{
+            cart.items[idx].count--
+        }
+        
+        cart.price -= course.price
+
+        return new Promise((resolve, reject) => {
+            fs.writeFile(
+                path.join(__dirname, '..', 'data', 'cart.json'),
+                JSON.stringify(cart),
+                (err) => {
+                    if(err){
+                        reject(err)
+                    }else{
+                        resolve(cart)
+                    }
+                }
+            )
+        })
+
+
+    }
+
     static async fetch(){
         return await new Promise((resolve, reject) => {
             fs.readFile(p, 'utf-8', (err, content) => {

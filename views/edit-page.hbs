@@ -16,6 +16,11 @@
             <span class="helper-text" data-error="Введите url"></span>
     </div>
     <input name="id" type="hidden" value="{{course.id}}">
-    <button class="btn btn-success">Добавить</button>
+    <button class="btn btn-success">Редактировать курс</button>
     
+</form>
+
+<form method="post" action="/courses/remove" style="margin-top: 2rem;">
+        <input type="hidden" name="_id" value="{{course._id}}">
+    <button class="btn red lighten-1">Удалить</button>
 </form>

@@ -8,7 +8,7 @@ const router = Router()
 
 router.get('/', async(req, res) => {
     const cart = await Cart.fetch()
-    console.log(cart)
+    
     res.render('cart-page', {
         title: 'Корзина курсов',
         price: cart.price,
@@ -17,11 +17,17 @@ router.get('/', async(req, res) => {
     return 
 })
 
+router.delete('/delete/:id', async(req, res) =>{
+     
+    const items = await Cart.delete(req.params.id)
+    res.status(200).json(items)
+})
+
 router.post('/add', async(req, res) => {
     const item = await Course.getById(req.body.id)
     await Cart.add(item)
     res.redirect('/cart')
-    return 
+    
 })
 
 

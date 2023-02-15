@@ -1,5 +1,6 @@
 
-
+<div id="cart-root">
+{{#if items.length}}
 <table>
     <thead>
         <tr>
@@ -14,8 +15,13 @@
             <td class="title">{{title}}</td>
             <td><span class="price">{{price}}</span></td>
             <td class="title">{{count}}шт</td>
+            <td><button class="btn btn-success delete" data-id="{{id}}">Удалить</button></td>
         </tr>
        {{/each}}
     </tbody>
 </table>
 <span class="cart-price">Общая стоимость: <b class="price">{{price}}</b></span>
+{{else}}
+<h2>Корзина пуста</h2>
+{{/if}}
+</div>

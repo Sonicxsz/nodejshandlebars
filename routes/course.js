@@ -3,9 +3,8 @@ const Course = require('../model/course')
 const router = Router()
 
 router.get('/', async(req, res) => {
-
-    const courses =  await Course.getAll()
-    
+    const courses = await Course.find().populate('userId', 'name email')
+    console.log(courses)
     res.render('courses-page',{
         title: 'Курсы',
         isCourses: true,
@@ -17,7 +16,7 @@ router.get('/', async(req, res) => {
 
 router.get('/:id', async(req, res) => {
 
-    const course = await Course.getById(req.params.id)
+    const course = await Course.findById(req.params.id)
     
     res.render('full-page', {
         course
@@ -30,7 +29,7 @@ router.get('/:id/edit', async(req, res) => {
         res.redirect('/')
         return
     }
-    const course = await Course.getById(req.params.id)
+    const course = await Course.findById(req.params.id)
     
     
     res.render('edit-page', {
@@ -40,8 +39,14 @@ router.get('/:id/edit', async(req, res) => {
     })
 })
 
+router.post('/remove', async(req, res) => {
+    await Course.deleteOne({_id: req.body._id})
+    res.redirect('/courses')
+})
+
 router.post('/edit', async(req, res) => {
-    await Course.update(req.body)
+    const {id, title, image, price} = req.body
+    await Course.findByIdAndUpdate(id, {title, image, price})
     res.redirect('/')
     return
 })
